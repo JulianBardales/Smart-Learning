@@ -1,0 +1,102 @@
+@extends('componentes.layout')
+
+@section('content')
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Editar componente</h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('componentes.index') }}">Atrás</a>
+            </div>
+        </div>
+    </div>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+     <form action="{{ route('componentes.update', $componente->id)}}" method="POST">
+    	@csrf
+        @method('PUT')
+
+         <div class="row">
+		    
+               <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Laboratorio:</strong>
+                    <select name="Laboratorio" class="form-control" id="Laboratorio" value="{{ $componente->Laboratorio }}"
+                                        <select name="Laboratorio" id="Laboratorio">
+                                        <option value="">- Laboratorio -</option>
+                                        <option value="TI">Tecnologías de la información</option>
+                                        <option value="Meca">Mecatrónica</option>
+                                        <option value="Gastro">Gastronomía</option>
+                                        <option value="Elect">Electrónica</option>
+                                    </select> 
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Nombre:</strong>
+                    <input type="text" name="Nombre" value="{{ $componente->Nombre }}" class="form-control" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Marca:</strong>
+                    <input type="text" name="Marca" value="{{ $componente->Marca }}" class="form-control" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Modelo:</strong>
+                    <input type="text" name="Modelo" value="{{ $componente->Modelo }}" class="form-control" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Características:</strong>
+                    <input type="text" name="Caracteristicas" value="{{ $componente->Caracteristicas }}" class="form-control" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Uso:</strong>
+                    <input type="text" name="Uso" value="{{ $componente->Uso }}" class="form-control" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Seguridad:</strong>
+                    <input type="text" name="Seguridad" value="{{ $componente->Seguridad }}" class="form-control" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Imágenes:</strong>
+                    <input type="text" name="Imagenes" value="{{ $componente->Imagenes }}" class="form-control" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Video:</strong>
+                    <input type="text" name="Video" value="{{ $componente->Video }}" class="form-control" placeholder="Nombre">
+                </div>
+            </div>
+
+		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+		      <button type="submit" class="btn btn-primary">Guardar</button>
+		    </div>
+		</div>
+
+    </form>
+
+@endsection
